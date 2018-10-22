@@ -5,6 +5,7 @@ metadata:
 spec:
   versioning: true
   accessControl: PublicRead
+  deletionPolicy: Retain
   website:
     enabled: true
     indexPage: index.html

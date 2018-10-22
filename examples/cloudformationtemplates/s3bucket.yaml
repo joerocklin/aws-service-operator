@@ -80,6 +80,15 @@ data:
           - BucketOwnerFullControl
           - AwsExecRead
         Default: "Private"
+      BucketDeletionPolicy:
+        Description: >-
+          Deletion policy to attempt. If the bucket is set to delete but not empty,
+          then delete will fail
+        Type: String
+        AllowedValues:
+          - Retain
+          - Delete
+        Default: Retain
     Mappings: {}
     Conditions:
       UseLogging: !Equals 
@@ -126,7 +135,7 @@ data:
             - UseVersioning
             - Status: Enabled
             - !Ref 'AWS::NoValue'
-        DeletionPolicy: Retain
+        DeletionPolicy: !Ref BucketDeletionPolicy
       LoggingBucket:
         Condition: UseLogging
         Type: 'AWS::S3::Bucket'

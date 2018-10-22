@@ -33,6 +33,7 @@ type S3BucketSpec struct {
 	Versioning                      bool            `json:"versioning"`
 	AccessControl                   string          `json:"accessControl"`
 	Logging                         S3BucketLogging `json:"logging"`
+	DeletionPolicy                  string          `json:"deletionPolicy"`
 	Website                         S3BucketWebsite `json:"website"`
 }
 

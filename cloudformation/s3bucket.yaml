@@ -73,6 +73,15 @@ Parameters:
       - BucketOwnerFullControl
       - AwsExecRead
     Default: "Private"
+  BucketDeletionPolicy:
+    Description: >-
+      Deletion policy to attempt. If the bucket is set to delete but not empty,
+      then delete will fail
+    Type: String
+    AllowedValues:
+      - Retain
+      - Delete
+    Default: Retain
   EnableStaticSite:
     Description: enable static site
     Type: String
@@ -142,7 +151,7 @@ Resources:
         - UseVersioning
         - Status: Enabled
         - !Ref 'AWS::NoValue'
-    DeletionPolicy: Retain
+    DeletionPolicy: !Ref BucketDeletionPolicy
 
   WebsiteBucketPolicy:
     Type: AWS::S3::BucketPolicy

@@ -60,6 +60,13 @@ spec:
             Logging prefix to attach to all logs in the bucket.
           structKey: Prefix
           templateKey: LoggingPrefix
+      - key: deletionPolicy
+        type: string
+        default: "Retain"
+        description: |
+          Deletion policy to attempt. If the bucket is set to delete but not empty, then delete will fail.
+        structKey: DeletionPolicy
+        templateKey: BucketDeletionPolicy
       - key: website
         type: object
         description: |
